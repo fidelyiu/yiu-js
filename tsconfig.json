@@ -9,6 +9,6 @@
         "noEmitHelpers": true,
         "baseUrl": "./"
     },
-    "files": ["./src/index.ts", "./rollup.config.ts"],
-    "include": ["./src/**/*.ts"]
+    "files": ["./src/index.ts", "./config/rollup.config.ts"],
+    "include": ["./src/**/*.ts", "./config/**/*.ts"]
 }
