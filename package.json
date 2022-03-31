@@ -2,7 +2,11 @@
     "name": "yiu-js",
     "version": "1.0.0",
     "description": "A JS tool library.",
+    "dependencies": {
+        "clone": "^2.1.2"
+    },
     "devDependencies": {
+        "@types/clone": "^2.1.1",
         "@typescript-eslint/eslint-plugin": "^5.17.0",
         "@typescript-eslint/parser": "^5.17.0",
         "eslint": "^8.12.0",
