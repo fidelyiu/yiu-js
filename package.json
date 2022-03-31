@@ -2,10 +2,16 @@
     "name": "yiu-js",
     "version": "1.0.0",
     "description": "A JS tool library.",
+    "scripts": {
+        "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript"
+    },
     "dependencies": {
         "clone": "^2.1.2"
     },
     "devDependencies": {
+        "@rollup/plugin-commonjs": "^21.0.3",
+        "@rollup/plugin-node-resolve": "^13.1.3",
+        "@rollup/plugin-typescript": "^8.3.1",
         "@types/clone": "^2.1.1",
         "@typescript-eslint/eslint-plugin": "^5.17.0",
         "@typescript-eslint/parser": "^5.17.0",
@@ -14,6 +20,9 @@
         "typescript": "^4.6.3"
     },
     "types": "./dist/index.d.ts",
+    "unpkg": "./dist/yiu.onlib.iife.js",
+    "jsdelivr": "./dist/yiu.onlib.iife.js",
+    "browser": "./dist/yiu.cjs.min.js",
     "main": "./dist/yiu-js.umd.js",
     "module": "./dist/yiu-js.es.js",
     "exports": {

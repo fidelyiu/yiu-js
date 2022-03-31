@@ -5,8 +5,10 @@
         "moduleResolution": "node",
         "target": "esnext",
         "esModuleInterop": true,
+        "importHelpers": true,
+        "noEmitHelpers": true,
         "baseUrl": "./"
     },
-    "files": ["./src/index.ts"],
+    "files": ["./src/index.ts", "./rollup.config.ts"],
     "include": ["./src/**/*.ts"]
 }
