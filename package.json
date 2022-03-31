@@ -5,5 +5,10 @@
     "main": "index.js",
     "repository": "https://github.com/fidelyiu/yiu-js.git",
     "author": "Fidel Yiu <fidel-yiu@foxmail.com>",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "eslint": "^8.12.0",
+        "rollup": "^2.70.1",
+        "typescript": "^4.6.3"
+    }
 }
