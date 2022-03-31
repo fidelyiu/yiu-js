@@ -1,0 +1,9 @@
+{
+    "name": "yiu-js",
+    "version": "1.0.0",
+    "description": "A JS tool library.",
+    "main": "index.js",
+    "repository": "https://github.com/fidelyiu/yiu-js.git",
+    "author": "Fidel Yiu <fidel-yiu@foxmail.com>",
+    "license": "MIT"
+}
