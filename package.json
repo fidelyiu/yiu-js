@@ -2,13 +2,26 @@
     "name": "yiu-js",
     "version": "1.0.0",
     "description": "A JS tool library.",
-    "main": "index.js",
-    "repository": "https://github.com/fidelyiu/yiu-js.git",
-    "author": "Fidel Yiu <fidel-yiu@foxmail.com>",
-    "license": "MIT",
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.17.0",
+        "@typescript-eslint/parser": "^5.17.0",
         "eslint": "^8.12.0",
         "rollup": "^2.70.1",
         "typescript": "^4.6.3"
-    }
+    },
+    "types": "./dist/index.d.ts",
+    "main": "./dist/yiu-js.umd.js",
+    "module": "./dist/yiu-js.es.js",
+    "exports": {
+        ".": {
+            "import": "./dist/yiu-js.es.js",
+            "require": "./dist/yiu-js.umd.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "repository": "https://github.com/fidelyiu/yiu-js.git",
+    "author": "Fidel Yiu <fidel-yiu@foxmail.com>",
+    "license": "MIT"
 }
