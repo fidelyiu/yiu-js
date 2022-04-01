@@ -40,5 +40,7 @@ export function isInLineSegment(num: number, x1: number, x2: number, compareType
             return x1 < num && num <= x2;
         case "[)":
             return x1 <= num && num < x2;
+        default:
+            return false;
     }
 }

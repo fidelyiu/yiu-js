@@ -3,8 +3,8 @@
 // import commonjs from "@rollup/plugin-commonjs";
 import { defineConfig } from "rollup";
 import { createOptionCjs } from "./options/cjs";
+import { createOptionIife } from "./options/iife";
 // import type { RollupOptions } from "rollup";
-
 
 // const config: RollupOptions = {
 //     input: "src/index.ts",
@@ -15,9 +15,7 @@ import { createOptionCjs } from "./options/cjs";
 //     plugins: [typescript(), nodeResolve(), commonjs()],
 // };
 
-const fileName = "yiu-js"
+const fileName = "yiu-js";
+const outName = "YiuJs";
 
-export default defineConfig([
-    createOptionCjs(fileName),
-    createOptionCjs(fileName, true),
-]);
+export default defineConfig([createOptionCjs(fileName), createOptionCjs(fileName, true), createOptionIife(fileName, outName), createOptionIife(fileName, outName, true)]);
