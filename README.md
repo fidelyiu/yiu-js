@@ -1,3 +1,7 @@
-# 1.未完成的事情
+# 一个JS工具库
 
-- [ ] 实现深拷贝，目前使用的[clone](https://github.com/pvorb/clone)
+```bash
+npm i yiu-js
+# or
+yarn add yiu-js
+```

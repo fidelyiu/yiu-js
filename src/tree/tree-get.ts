@@ -1,4 +1,3 @@
-import { deepClone } from "src/lang/clone";
 import type { TreeData, TreeFilterOption, TreeNode, TreeSearchFunc } from "./tree-type";
 
 /**
@@ -85,10 +84,14 @@ export function getFilterBySearch(treeData: TreeData, scFunc: TreeSearchFunc, op
     if (!opt) opt = {};
     const parentMatch = !!opt.parentMatch;
     const childrenMatch = !!opt.childrenMatch;
+    let deepClone = opt.deepCloneFunc;
+    if (!deepClone || typeof deepClone !== 'function') {
+        deepClone = (data: TreeData) => JSON.parse(JSON.stringify(data));
+    }
     if (typeof scFunc !== "function" || !treeData || !treeData.length) {
         return result;
     }
-    const cloneTreeData = deepClone(treeData);
+    const cloneTreeData = <TreeData>deepClone(treeData);
     if (parentMatch) {
         // 父节点必须匹配
         for (const treeNode of cloneTreeData) {

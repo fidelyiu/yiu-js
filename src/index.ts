@@ -3,8 +3,8 @@
  */
 
 // js语言方面的工具
-import * as Lang from "./lang/clone";
-export { Lang };
+// import * as Lang from "./lang/clone";
+// export { Lang };
 
 // number方面的工具
 import * as NumIs from "./num/num-is";
