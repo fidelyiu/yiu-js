@@ -1,6 +1,15 @@
 import type { CompareType } from "./num-type";
 
 /**
+ * 判断数字是否是整数
+ *
+ * 前提是数字
+ */
+export function numIsInt(num: number): boolean {
+    return isNumber(num) && num === Math.ceil(num);
+}
+
+/**
  * 判断线段`a-[x1,x2]`是否与线段`b-[x3,x4]`相交
  *
  * 前提时四个参数要是数字，参数注意顺序。
