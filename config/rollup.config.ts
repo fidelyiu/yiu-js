@@ -4,6 +4,7 @@
 import { defineConfig } from "rollup";
 import { createOptionCjs } from "./options/cjs";
 import { createOptionIife } from "./options/iife";
+import { createOptionUmd } from "./options/umd";
 // import type { RollupOptions } from "rollup";
 
 // const config: RollupOptions = {
@@ -18,4 +19,11 @@ import { createOptionIife } from "./options/iife";
 const fileName = "yiu-js";
 const outName = "YiuJs";
 
-export default defineConfig([createOptionCjs(fileName), createOptionCjs(fileName, true), createOptionIife(fileName, outName), createOptionIife(fileName, outName, true)]);
+export default defineConfig([
+    createOptionCjs(fileName),
+    createOptionCjs(fileName, true),
+    createOptionIife(fileName, outName),
+    createOptionIife(fileName, outName, true),
+    createOptionUmd(fileName, outName),
+    createOptionUmd(fileName, outName, true),
+]);
