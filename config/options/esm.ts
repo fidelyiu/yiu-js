@@ -14,6 +14,8 @@ export function createOptionEsm(option: BuildOption): RollupOptions {
         output: {
             file: `dist/esm/${fileName}${minify ? ".min" : ""}.js`,
             format: "esm",
+            sourcemap: minify,
+            sourcemapFile: `dist/esm/${fileName}${minify ? ".min" : ""}.map`,
             globals,
             plugins: [minify ? terser() : undefined],
         },

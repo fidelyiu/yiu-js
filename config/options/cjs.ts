@@ -14,6 +14,8 @@ export function createOptionCjs(option: BuildOption): RollupOptions {
         output: {
             file: `dist/cjs/${fileName}${minify ? ".min" : ""}.cjs`,
             format: "cjs",
+            sourcemap: minify,
+            sourcemapFile: `dist/cjs/${fileName}${minify ? ".min" : ""}.map`,
             globals,
             plugins: [minify ? terser() : undefined],
         },
