@@ -7,7 +7,7 @@ import type { CompareType } from "./num-type";
  *
  * 前提是数字
  */
-export function numIsInt(num: number): boolean {
+export function isInt(num: number): boolean {
     return isNumber(num) && num === getCeil(num);
 }
 
