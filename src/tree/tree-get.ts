@@ -1,3 +1,4 @@
+import { getCloneDeep } from "src/lang/lang-get";
 import type { TreeData, TreeFilterOption, TreeNode, TreeSearchFunc } from "./tree-type";
 
 /**
@@ -85,8 +86,8 @@ export function getFilterBySearch(treeData: TreeData, scFunc: TreeSearchFunc, op
     const parentMatch = !!opt.parentMatch;
     const childrenMatch = !!opt.childrenMatch;
     let deepClone = opt.deepCloneFunc;
-    if (!deepClone || typeof deepClone !== 'function') {
-        deepClone = (data: TreeData) => JSON.parse(JSON.stringify(data));
+    if (!deepClone || typeof deepClone !== "function") {
+        deepClone = getCloneDeep;
     }
     if (typeof scFunc !== "function" || !treeData || !treeData.length) {
         return result;

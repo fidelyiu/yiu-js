@@ -1,10 +1,11 @@
 /**
- * YiuJs 是一个js工具库
+ * YiuJs 是一个js的功能分类工具库，部分功能基于lodash分类重命名。
  */
 
 // js语言方面的工具
-import * as Lang from "./lang";
-export { Lang };
+import * as LangIs from "./lang/lang-is";
+import * as LangGet from "./lang/lang-get";
+export { LangIs, LangGet };
 
 // number方面的工具
 import * as NumIs from "./num/num-is";

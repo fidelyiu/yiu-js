@@ -1,5 +1,5 @@
-import { ceil } from "lodash";
-import { isNumber } from "src/lang";
+import { isNumber } from "src/lang/lang-is";
+import { getCeil } from "./num-get";
 import type { CompareType } from "./num-type";
 
 /**
@@ -8,7 +8,7 @@ import type { CompareType } from "./num-type";
  * 前提是数字
  */
 export function numIsInt(num: number): boolean {
-    return isNumber(num) && num === ceil(num);
+    return isNumber(num) && num === getCeil(num);
 }
 
 /**
