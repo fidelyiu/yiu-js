@@ -18,7 +18,7 @@ export function createOptionIife(option: BuildOption): RollupOptions {
         external,
         output: {
             name: outName,
-            file: `dist/iife/${fileName}.iife${external.toString() ? ".ex" : ""}${minify ? ".min" : ""}.js`,
+            file: `dist/iife/${fileName}${external.toString() ? ".ex" : ""}${minify ? ".min" : ""}.js`,
             format: "iife",
             globals,
             plugins: [minify ? terser() : undefined],

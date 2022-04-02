@@ -13,7 +13,7 @@ export function createOptionUmd(option: BuildOption): RollupOptions {
         external,
         output: {
             name: outName,
-            file: `dist/umd/${fileName}.umd${external.toString() ? ".ex" : ""}${minify ? ".min" : ""}.js`,
+            file: `dist/umd/${fileName}${external.toString() ? ".ex" : ""}${minify ? ".min" : ""}.js`,
             format: "umd",
             globals,
             plugins: [minify ? terser() : undefined],

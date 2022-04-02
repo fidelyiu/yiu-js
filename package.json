@@ -23,11 +23,11 @@
     },
     "type": "module",
     "types": "./dist/index.d.ts",
-    "unpkg": "./dist/iife/yiu-js.iife.min.js",
-    "jsdelivr": "./dist/iife/yiu-js.iife.min.js",
-    "browser": "./dist/umd/yiu-js.umd.ex.min.js",
-    "main": "./dist/umd/yiu-js.umd.ex.min.js",
-    "module": "./dist/esm/yiu-js.esm.min.js",
+    "unpkg": "./dist/iife/yiu-js.min.js",
+    "jsdelivr": "./dist/iife/yiu-js.min.js",
+    "browser": "./dist/umd/yiu-js.ex.min.js",
+    "main": "./dist/umd/yiu-js.ex.min.js",
+    "module": "./dist/esm/yiu-js.min.js",
     "exports": {
         ".": {
             "import": "./dist/esm/yiu-js.esm.min.js",

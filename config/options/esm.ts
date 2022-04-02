@@ -12,7 +12,7 @@ export function createOptionEsm(option: BuildOption): RollupOptions {
         plugins: [typescript(), nodeResolve(), commonjs()],
         external,
         output: {
-            file: `dist/esm/${fileName}.esm${minify ? ".min" : ""}.js`,
+            file: `dist/esm/${fileName}${minify ? ".min" : ""}.js`,
             format: "esm",
             globals,
             plugins: [minify ? terser() : undefined],
