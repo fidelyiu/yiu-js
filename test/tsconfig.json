@@ -8,5 +8,5 @@
         "noEmit": true
     },
     "include": ["./*.ts", "./**/*.ts"],
-    "references": [{ "path": "../src" }]
+    "references": [{ "path": "../src/tsconfig.type.json" }]
 }
