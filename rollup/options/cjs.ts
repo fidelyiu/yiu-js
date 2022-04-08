@@ -8,7 +8,7 @@ import type { BuildOption } from "./option-type";
 export function createOptionCjs(option: BuildOption): RollupOptions {
     const { fileName, minify = false, external = [], globals } = option;
     return {
-        input: "src/index.ts",
+        input: "./dist/ts/index.ts",
         plugins: [typescript, nodeResolve(), commonjs()],
         external,
         output: {

@@ -8,7 +8,7 @@ import type { BuildOption } from "./option-type";
 export function createOptionUmd(option: BuildOption): RollupOptions {
     const { fileName, outName, minify = false, external = [], globals } = option;
     return {
-        input: "src/index.ts",
+        input: "./dist/ts/index.ts",
         plugins: [typescript, nodeResolve(), commonjs()],
         external,
         output: {
