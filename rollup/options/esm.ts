@@ -1,4 +1,4 @@
-import typescript from "@rollup/plugin-typescript";
+import typescript from "../plugins/typescript";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
@@ -9,9 +9,10 @@ export function createOptionEsm(option: BuildOption): RollupOptions {
     const { fileName, minify = false, external = [], globals } = option;
     return {
         input: "src/index.ts",
-        plugins: [typescript(), nodeResolve(), commonjs()],
+        plugins: [typescript, nodeResolve(), commonjs()],
         external,
         output: {
+            // dir: "../dist",
             file: `dist/esm/${fileName}${minify ? ".min" : ""}.js`,
             format: "esm",
             sourcemap: minify,

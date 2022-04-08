@@ -5,8 +5,8 @@
     "scripts": {
         "test": "ts-node ./scripts/jest.ts",
         "build:t": "ts-node ./scripts/build.ts",
-        "clear:node_modules": "rimraf node_modules",
-        "build": "rollup --config ./rollup/rollup.config.ts --configPlugin @rollup/plugin-typescript"
+        "build": "rollup --config ./rollup/rollup.config.ts --configPlugin @rollup/plugin-typescript",
+        "clear:node_modules": "rimraf node_modules"
     },
     "dependencies": {
         "lodash": "^4.17.21"

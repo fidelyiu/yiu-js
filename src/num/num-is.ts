@@ -1,4 +1,4 @@
-import { isNumber } from "src/lang/lang-is";
+import { isNumber } from "../lang/lang-is";
 import { getCeil } from "./num-get";
 import type { CompareType } from "./num-type";
 

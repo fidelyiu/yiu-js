@@ -1,4 +1,4 @@
-import { getCloneDeep } from "src/lang/lang-get";
+import { getCloneDeep } from "../lang/lang-get";
 import type { TreeData, TreeFilterOption, TreeNode, TreeSearchFunc } from "./tree-type";
 
 /**
