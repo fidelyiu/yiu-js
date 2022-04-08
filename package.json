@@ -4,8 +4,7 @@
     "description": "A JS tool library.",
     "scripts": {
         "test": "ts-node ./scripts/jest.ts",
-        "build:rollup": "ts-node ./scripts/build.ts",
-        "build:type": "tsc -p ./src/tsconfig.type.json",
+        "build": "ts-node ./scripts/build.ts",
         "clear:node_modules": "rimraf node_modules"
     },
     "dependencies": {

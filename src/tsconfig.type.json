@@ -9,7 +9,8 @@
         "emitDeclarationOnly": true,
         "declaration": true,
         "declarationMap": true,
-        "declarationDir": "../dist/@types"
+        "declarationDir": "../dist/@types",
+        "tsBuildInfoFile": "../dist/cache/src.type.tsbuildinfo"
     },
     "include": ["./*.ts", "./**/*.ts"],
     "exclude": ["dist"]
