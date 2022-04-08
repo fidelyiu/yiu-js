@@ -6,8 +6,7 @@
         "target": "esnext",
         "esModuleInterop": true,
         "importHelpers": true,
-        "noEmit": true,
-        "baseUrl": "./"
+        "noEmit": true
     },
-    "include": ["./scripts/*.ts", "./scripts/**/*.ts", "./rollup/*.ts", "./rollup/**/*.ts"]
+    "include": ["./scripts/*.ts", "./scripts/**/*.ts"]
 }
