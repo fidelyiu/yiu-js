@@ -29,16 +29,16 @@
         "tslib": "^2.3.1",
         "typescript": "^4.6.3"
     },
-    "types": "./dist/index.d.ts",
-    "unpkg": "./dist/iife/yiu-js.min.js",
+    "types": "./dist/@types/index.d.ts",
+    "unpkg": "./dist/umd/yiu-js.min.js",
     "jsdelivr": "./dist/iife/yiu-js.min.js",
     "browser": "./dist/umd/yiu-js.ex.min.js",
     "main": "./dist/umd/yiu-js.ex.min.js",
     "module": "./dist/esm/yiu-js.min.js",
     "exports": {
         ".": {
-            "import": "./dist/esm/yiu-js.esm.min.js",
-            "require": "./dist/umd/yiu-js.umd.ex.min.js"
+            "import": "./dist/esm/yiu-js.min.js",
+            "require": "./dist/umd/yiu-js.ex.min.js"
         }
     },
     "files": [
