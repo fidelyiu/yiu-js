@@ -28,7 +28,7 @@ yarn add yiu-js
 浏览器有其他依赖：
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@latest/lodash.min.js"></script>
 <script src="https://unpkg.com/yiu-js@latest/yiu.onlib.iife.min.js"></script>
 
 <script>
