@@ -4,5 +4,5 @@ const defaultTask: TaskFunction = function (cb) {
     cb();
 };
 
-// exports.build = build;
+// exports.jest = jestTask;
 exports.default = defaultTask;

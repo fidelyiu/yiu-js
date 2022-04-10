@@ -1,7 +1,7 @@
 import type { Config } from "@jest/types";
 
 const config: Config.InitialOptions = {
-    preset: "ts-jest/presets/default-esm",
+    preset: "ts-jest",
     rootDir: "..",
     testEnvironment: "node",
     coverageDirectory: "coverage",
@@ -9,8 +9,7 @@ const config: Config.InitialOptions = {
     collectCoverageFrom: ["src/**/*.ts", "src/*.ts", "!**/node_modules/**"],
     globals: {
         "ts-jest": {
-            isolatedModules: true,
-            useESM: true,
+            tsconfig: "./tsconfig.json",
         },
     },
     resetMocks: true,

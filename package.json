@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "A JS tool library.",
     "scripts": {
-        "test": "ts-node ./scripts/jest.ts",
+        "test": "jest -c=./test/jest.config.ts",
         "build": "ts-node ./scripts/build.ts",
         "clear:node_modules": "rimraf node_modules",
         "gulp:run": "gulp -f ./gulp/index.ts"
