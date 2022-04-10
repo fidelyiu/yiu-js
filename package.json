@@ -41,9 +41,6 @@
             "require": "./dist/umd/yiu-js.ex.min.js"
         }
     },
-    "files": [
-        "dist"
-    ],
     "repository": "https://github.com/fidelyiu/yiu-js.git",
     "author": "Fidel Yiu <fidel-yiu@foxmail.com>",
     "license": "MIT"
