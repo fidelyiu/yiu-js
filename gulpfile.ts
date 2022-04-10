@@ -1,7 +1,8 @@
 import { series, src, dest } from "gulp";
-import { execSync } from "node:child_process";
+import { execSync, spawnSync } from "node:child_process";
 import through2 from "through2";
 import del from "del";
+
 import type { TaskFunction } from "gulp";
 
 /**
@@ -64,6 +65,25 @@ const copyTsConfig: TaskFunction = function () {
 };
 
 /**
+ * 运行rollup编译代码
+ */
+const runRollup: TaskFunction = function (cb) {
+    spawnSync(
+        "node",
+        [
+            "--experimental-vm-modules",
+            "--no-warnings",
+            "node_modules/rollup/dist/bin/rollup",
+            "--config=./rollup/rollup.config.ts",
+            // ts
+            "--configPlugin=@rollup/plugin-typescript",
+        ],
+        { stdio: "inherit" }
+    );
+    cb();
+};
+
+/**
  * 删除源码ts配置文件
  */
 const delTsConfig: TaskFunction = function () {
@@ -71,4 +91,4 @@ const delTsConfig: TaskFunction = function () {
 };
 
 // exports.jest = jestTask;
-exports.build = series(copySource, copyTsTypeConfig, buildTsType, delTsTypeConfig, copyTsConfig, delTsConfig);
+exports.build = series(copySource, copyTsTypeConfig, buildTsType, delTsTypeConfig, copyTsConfig, runRollup, delTsConfig);
