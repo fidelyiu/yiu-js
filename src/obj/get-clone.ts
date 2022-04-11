@@ -1,4 +1,4 @@
-import { clone, cloneDeep } from "lodash";
+import { clone } from "lodash";
 
 /**
  * 创建一个浅层克隆的值。
@@ -17,12 +17,6 @@ import { clone, cloneDeep } from "lodash";
  * @param value 要克隆的值
  * @return 返回克隆的值
  */
-const getClone = clone;
-/**
- * 这个方法和`getClone`一样，只是它递归地克隆值。
- * @param value 要克隆的值
- * @return 返回克隆的值
- */
-const getCloneDeep = cloneDeep;
+const objGetClone = clone;
 
-export { getClone, getCloneDeep };
+export default objGetClone;

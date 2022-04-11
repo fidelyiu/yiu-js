@@ -1,9 +1,11 @@
 {
     "name": "yiu-js",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "A JS tool library.",
     "scripts": {
-        "build": "rollup --config ./config/rollup.config.ts --configPlugin @rollup/plugin-typescript"
+        "test": "ts-node ./scripts/jest.ts",
+        "build": "ts-node ./scripts/build.ts",
+        "clear:node_modules": "rimraf node_modules"
     },
     "dependencies": {
         "lodash": "^4.17.21"
@@ -12,31 +14,33 @@
         "@rollup/plugin-commonjs": "^21.0.3",
         "@rollup/plugin-node-resolve": "^13.1.3",
         "@rollup/plugin-typescript": "^8.3.1",
+        "@types/jest": "^27.4.1",
         "@types/lodash": "^4.14.181",
+        "@types/node": "^17.0.23",
         "@typescript-eslint/eslint-plugin": "^5.17.0",
         "@typescript-eslint/parser": "^5.17.0",
         "eslint": "^8.12.0",
+        "jest": "^27.5.1",
+        "rimraf": "^3.0.2",
         "rollup": "^2.70.1",
         "rollup-plugin-terser": "^7.0.2",
+        "ts-jest": "^27.1.4",
+        "ts-node": "^10.7.0",
         "tslib": "^2.3.1",
         "typescript": "^4.6.3"
     },
-    "type": "module",
-    "types": "./dist/index.d.ts",
-    "unpkg": "./dist/iife/yiu-js.min.js",
+    "types": "./dist/@types/index.d.ts",
+    "unpkg": "./dist/umd/yiu-js.min.js",
     "jsdelivr": "./dist/iife/yiu-js.min.js",
     "browser": "./dist/umd/yiu-js.ex.min.js",
     "main": "./dist/umd/yiu-js.ex.min.js",
     "module": "./dist/esm/yiu-js.min.js",
     "exports": {
         ".": {
-            "import": "./dist/esm/yiu-js.esm.min.js",
-            "require": "./dist/umd/yiu-js.umd.ex.min.js"
+            "import": "./dist/esm/yiu-js.min.js",
+            "require": "./dist/umd/yiu-js.ex.min.js"
         }
     },
-    "files": [
-        "dist"
-    ],
     "repository": "https://github.com/fidelyiu/yiu-js.git",
     "author": "Fidel Yiu <fidel-yiu@foxmail.com>",
     "license": "MIT"

@@ -37,6 +37,5 @@ export type TreeFilterOption = {
      * 默认false，子节点是否必须 需要匹配
      */
     childrenMatch?: boolean;
-    // eslint-disable-next-line @typescript-eslint/ban-types
     deepCloneFunc?: Function;
 };

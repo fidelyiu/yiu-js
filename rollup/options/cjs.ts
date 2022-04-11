@@ -1,21 +1,21 @@
-import typescript from "@rollup/plugin-typescript";
+import typescript from "../plugins/typescript";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import { terser } from "rollup-plugin-terser";
 import type { RollupOptions } from "rollup";
 import type { BuildOption } from "./option-type";
 
-export function createOptionEsm(option: BuildOption): RollupOptions {
+export function createOptionCjs(option: BuildOption): RollupOptions {
     const { fileName, minify = false, external = [], globals } = option;
     return {
-        input: "src/index.ts",
-        plugins: [typescript(), nodeResolve(), commonjs()],
+        input: "./dist/ts/index.ts",
+        plugins: [typescript, nodeResolve(), commonjs()],
         external,
         output: {
-            file: `dist/esm/${fileName}${minify ? ".min" : ""}.js`,
-            format: "esm",
+            file: `dist/cjs/${fileName}${minify ? ".min" : ""}.cjs`,
+            format: "cjs",
             sourcemap: minify,
-            sourcemapFile: `dist/esm/${fileName}${minify ? ".min" : ""}.map`,
+            sourcemapFile: `dist/cjs/${fileName}${minify ? ".min" : ""}.map`,
             globals,
             plugins: [minify ? terser() : undefined],
         },
