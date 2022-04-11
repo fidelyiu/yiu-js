@@ -68,6 +68,10 @@ function bootstrap() {
             .replace(/\.\/dist/g, "."),
         { encoding: "utf8" }
     );
+
+    // 拷贝npm忽略文件
+    console.log("修改.npmignore!");
+    copyFileSync("./.npmignore", "./dist/.npmignore");
 }
 
 bootstrap();
