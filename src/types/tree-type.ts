@@ -1,30 +1,29 @@
-type TreeOtherData<T> = {
-    [P in keyof Omit<T, "children">]: Omit<T, "children">[P];
-};
-
 /**
  * 树节点类型
  */
-export type TreeNode<T = Record<string, unknown>> = {
+export type TreeNode = {
     /**
      * 子树
      */
-    children: TreeData<T>;
-} & TreeOtherData<T>;
+    children: TreeData;
+    [key: string]: any;
+};
 
 /**
  * 树类型
  */
-export type TreeData<T = Record<string, unknown>> = Array<TreeNode<T>>;
+export type TreeData = Array<TreeNode>;
+
+export type TreeParseIdFunc = (d: any) => string;
 
 /**
  * 树的搜索函数类型
  */
-export type TreeSearchFunc<T = Record<string, unknown>> = (treeNode: TreeNode<T>) => boolean;
+export type TreeSearchFunc = (treeNode: TreeNode) => boolean;
 /**
  * 树的操作函数类型
  */
-export type TreeOperationFunc<T = Record<string, unknown>> = (treeNode: TreeNode<T>) => void;
+export type TreeOperationFunc = (treeNode: TreeNode) => void;
 /**
  * 树的过滤配置类型
  */
@@ -38,4 +37,10 @@ export type TreeFilterOption = {
      */
     childrenMatch?: boolean;
     deepCloneFunc?: Function;
+};
+
+export type TreePropsOpt = {
+    keyProp?: string;
+    parentKeyProp?: string;
+    childrenProp?: string;
 };
