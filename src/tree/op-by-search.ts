@@ -1,9 +1,15 @@
-import type { TreeData, TreeOperationFunc, TreeSearchFunc } from "../types/tree-type";
+import type { TreeBaseOpt, TreeOperationFunc, TreeSearchFunc } from "../types/tree-type";
+import getTreePropsValue from "./base/get-tree-props-value";
+import setTreePropsValue from "./base/set-tree-props-value";
+import TreeIdSet from "./base/tree-id-set";
 
-function _opBySearch(treeData: TreeData, opFunc: TreeOperationFunc, scFunc: TreeSearchFunc): TreeData {
+function _opBySearch(treeData: Array<any>, opFunc: TreeOperationFunc, scFunc: TreeSearchFunc, idSet: TreeIdSet, opt?: TreeBaseOpt): Array<any> {
     treeData.forEach((item) => {
-        if (item.children && item.children.length > 0) {
-            item.children = _opBySearch(item.children, opFunc, scFunc);
+        if (idSet.has(item, opt)) return;
+        idSet.push(item, opt);
+        const children = getTreePropsValue(item, "children", opt);
+        if (Array.isArray(children) && children.length > 0) {
+            setTreePropsValue(item, "children", _opBySearch(children, opFunc, scFunc, idSet, opt), opt);
         }
         if (scFunc(item)) {
             // 符合要求的item
@@ -18,11 +24,13 @@ function _opBySearch(treeData: TreeData, opFunc: TreeOperationFunc, scFunc: Tree
  * @param treeData 树
  * @param scFunc 过滤函数，必须返回boolen（不要修改节点）
  * @param opFunc 操作函数
+ * @param opt 树解析配置
  * @returns
  */
-export default function treeOpBySearch(treeData: TreeData, opFunc: TreeOperationFunc, scFunc: TreeSearchFunc): TreeData {
+export default function treeOpBySearch(treeData: Array<any>, opFunc: TreeOperationFunc, scFunc: TreeSearchFunc, opt?: TreeBaseOpt): Array<any> {
     if (typeof scFunc !== "function" || typeof opFunc !== "function") {
         return treeData;
     }
-    return _opBySearch(treeData, opFunc, scFunc);
+    const idSet = new TreeIdSet();
+    return _opBySearch(treeData, opFunc, scFunc, idSet, opt);
 }

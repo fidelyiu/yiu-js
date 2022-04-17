@@ -1,4 +1,6 @@
-import { TreeData, TreeParseIdFunc } from "../types/tree-type";
+import { TreeBaseOpt } from "../types/tree-type";
+import getTreePropsValue from "./base/get-tree-props-value";
+import treeOpBySearch from "./op-by-search";
 
 /**
  * 根据List生成Tree
@@ -7,18 +9,39 @@ import { TreeData, TreeParseIdFunc } from "../types/tree-type";
  * @param parseIdFunc 解析key函数
  * @returns
  */
-export default function treeGetTreeByList(list: TreeData) {
-    // let parentParser = (d: { parentKey: string }) => d.parentKey;
-    // let keyParser = (d: { key: string }) => d.key;
-    // if (typeof parentParseIdFunc === "function") {
-    //     parentParser = parentParseIdFunc;
-    // }
-    // if (typeof parseIdFunc === "function") {
-    //     keyParser = parseIdFunc;
-    // }
-    // if (list) {
-    // }
-    // return [];
+export default function treeGetTreeByList(list: Array<any>, opt?: TreeBaseOpt) {
+    if (!Array.isArray(list) || !list.length) return [];
+    let result: Array<any> = [];
+    list.forEach((item) => {
+        result = mergeTreeDataAndNode(result, item, opt);
+    });
+    return result;
 }
 
-// function _treeGetTreeByList() {}
+function mergeNodeToTree(tree: Array<any>, node: any, opt?: TreeBaseOpt): Array<any> {
+    if (!Array.isArray(tree) || !tree.length) return [node];
+    const id = getTreePropsValue(node, "id", opt);
+    if (!id) return tree;
+    const pid = getTreePropsValue(node, "pid", opt);
+    if (!pid) {
+        return mergeTreeToNode(tree, node, opt);
+    }
+    let hasMerge = false;
+    treeOpBySearch(
+        tree,
+        () => {},
+        (item) => getTreePropsValue(item, "id", opt) === pid,
+        opt
+    );
+    const result = tree.slice();
+    result.push(node);
+    return result;
+}
+
+function mergeTreeToNode(tree: Array<any>, node: any, opt?: TreeBaseOpt): Array<any> {
+    return [];
+}
+
+function mergeNode(node1: any, node2: any, opt?: TreeBaseOpt): any {
+    
+}
