@@ -1,6 +1,6 @@
 {
     "name": "yiu-js",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "description": "A JS tool library.",
     "scripts": {
         "test": "ts-node ./scripts/jest.ts",
