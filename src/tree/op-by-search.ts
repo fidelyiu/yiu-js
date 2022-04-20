@@ -19,8 +19,8 @@ function _opBySearch(treeData: Array<any>, opFunc: TreeOperationFunc, scFunc: Tr
 /**
  * 操作所有符合查询条件的节点
  * @param treeData 树
- * @param scFunc 过滤函数，必须返回boolen（不要修改节点）
  * @param opFunc 操作函数
+ * @param scFunc 过滤函数，必须返回boolen（不要修改节点）
  * @param opt 树解析配置
  * @returns
  */

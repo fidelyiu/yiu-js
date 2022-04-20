@@ -43,21 +43,27 @@ export { strGetDelEnd, strGetFirst, strGetReverse, strIsBlank, strIsContainSStr,
 // tree方面的工具
 import treeGetFilterBySearch from "./tree/get-filter-by-search";
 import treeGetFirstNodePathByLevel from "./tree/get-first-node-path-by-level";
+import treeGetMaxLevel from "./tree/get-max-level";
 import treeGetOneNodeBySearch from "./tree/get-one-node-by-search";
 import treeGetOneNodePathBySearch from "./tree/get-one-node-path-by-search";
+import treeGetTreeByList from "./tree/get-tree-by-list";
 import treeHasBySearch from "./tree/has-by-search";
 import treeOpAll from "./tree/op-all";
 import treeOpByLevel from "./tree/op-by-level";
 import treeOpBySearch from "./tree/op-by-search";
 import treeToArray from "./tree/to-array";
+import treeIsTree from "./tree/is-tree";
 export {
     treeGetFilterBySearch,
     treeGetFirstNodePathByLevel,
+    treeGetMaxLevel,
     treeGetOneNodeBySearch,
     treeGetOneNodePathBySearch,
+    treeGetTreeByList,
     treeHasBySearch,
     treeOpAll,
     treeOpByLevel,
     treeOpBySearch,
     treeToArray,
+    treeIsTree,
 };

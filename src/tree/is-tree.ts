@@ -26,7 +26,7 @@ function _isTree(treeData: Array<any>, idSet: Set<string>, opt?: TreeBaseOpt) {
  * @param opt 树解析配置
  * @returns true表示有效树、false表示无效
  */
-export default function isTree(treeData: Array<any>, opt?: TreeBaseOpt) {
+export default function treeIsTree(treeData: Array<any>, opt?: TreeBaseOpt) {
     const idSet = new Set<string>();
     return _isTree(treeData, idSet, opt);
 }
