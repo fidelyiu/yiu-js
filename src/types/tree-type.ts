@@ -1,11 +1,11 @@
 /**
  * 树的搜索函数类型
  */
-export type TreeSearchFunc = (treeNode: any) => boolean;
+export type TreeSearchFunc = (treeNode: any, level: number, index: number) => boolean;
 /**
  * 树的操作函数类型
  */
-export type TreeOperationFunc = (treeNode: any) => void;
+export type TreeOperationFunc = (treeNode: any, level: number, index: number) => void;
 /**
  * 树的过滤配置类型
  */
