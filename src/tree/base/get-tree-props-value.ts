@@ -1,5 +1,5 @@
 import { TreeKeyType, TreeBaseOpt } from "../../types/tree-type";
-import { worringKey, worringKeyMode, worringOptFuncShouldBe, worringOptNotFind, worringOptNotFunc, worrinPropNotFind } from "./worn-func";
+import { worringKey, worringKeyMode, worringKeyShouldBe, worringOptFuncShouldBe, worringOptNotFind, worringOptNotFunc, worrinPropNotFind } from "./worn-func";
 
 export default function getTreePropsValue(treeNode: any, key: TreeKeyType, opt?: TreeBaseOpt): any {
     let result;
@@ -25,10 +25,13 @@ export default function getTreePropsValue(treeNode: any, key: TreeKeyType, opt?:
                     break;
                 }
                 case "children": {
-                    if (treeNode.children) {
+                    if (typeof treeNode.children === "undefined") {
+                        result = [];
+                    } else if (Array.isArray(treeNode.children)) {
                         result = treeNode.children;
                     } else {
-                        baseOpt.worn && worrinPropNotFind("children", treeNode);
+                        result = [];
+                        baseOpt.worn && worringKeyShouldBe("children", "Array", treeNode.children, treeNode);
                     }
                     break;
                 }
@@ -67,10 +70,13 @@ export default function getTreePropsValue(treeNode: any, key: TreeKeyType, opt?:
                 }
                 case "children": {
                     if (baseOpt.childrenProp) {
-                        if (treeNode[baseOpt.childrenProp]) {
+                        if (typeof treeNode[baseOpt.childrenProp] === "undefined") {
+                            result = [];
+                        } else if (Array.isArray(treeNode[baseOpt.childrenProp])) {
                             result = treeNode[baseOpt.childrenProp];
                         } else {
-                            baseOpt.worn && worrinPropNotFind(baseOpt.childrenProp, treeNode);
+                            result = [];
+                            baseOpt.worn && worringKeyShouldBe(baseOpt.childrenProp, "Array", treeNode[baseOpt.childrenProp], treeNode);
                         }
                     } else {
                         baseOpt.worn && worringOptNotFind("childrenProp", baseOpt);
@@ -115,9 +121,13 @@ export default function getTreePropsValue(treeNode: any, key: TreeKeyType, opt?:
                 case "children": {
                     if (typeof baseOpt.childrenGetter === "function") {
                         const value = baseOpt.childrenGetter(treeNode);
-                        if (Array.isArray(value)) {
+                        
+                        if (typeof value === "undefined") {
+                            result = [];
+                        } else if (Array.isArray(value)) {
                             result = value;
                         } else {
+                            result = [];
                             baseOpt.worn && worringOptFuncShouldBe("childrenGetter", "Array", value, treeNode);
                         }
                     } else {

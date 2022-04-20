@@ -1,20 +1,17 @@
 import type { TreeBaseOpt, TreeSearchFunc } from "../types/tree-type";
 import getTreePropsValue from "./base/get-tree-props-value";
-import TreeIdSet from "./base/tree-id-set";
 
-function _treeGetOneNodePathBySearch(treeData: Array<any>, scFunc: TreeSearchFunc, idSet: TreeIdSet, opt?: TreeBaseOpt): Array<any> | [] {
+function _treeGetOneNodePathBySearch(treeData: Array<any>, scFunc: TreeSearchFunc, opt?: TreeBaseOpt): Array<any> | [] {
     if (typeof scFunc !== "function" || !treeData || !treeData.length) {
         return [];
     }
     for (const treeNode of treeData) {
-        if (idSet.has(treeNode, opt)) continue;
-        idSet.push(treeNode, opt);
         if (scFunc(treeNode)) {
             return [treeNode];
         }
         const children = getTreePropsValue(treeNode, "children", opt);
         if (Array.isArray(children) && children.length) {
-            const childrenResult = _treeGetOneNodePathBySearch(children, scFunc, idSet, opt);
+            const childrenResult = _treeGetOneNodePathBySearch(children, scFunc, opt);
             if (childrenResult && childrenResult.length) {
                 return [treeNode, ...childrenResult];
             }
@@ -31,6 +28,5 @@ function _treeGetOneNodePathBySearch(treeData: Array<any>, scFunc: TreeSearchFun
  * @returns 找到的节点即父节点数组
  */
 export default function treeGetOneNodePathBySearch(treeData: Array<any>, scFunc: TreeSearchFunc, opt?: TreeBaseOpt): Array<any> | [] {
-    const idSet = new TreeIdSet();
-    return _treeGetOneNodePathBySearch(treeData, scFunc, idSet, opt);
+    return _treeGetOneNodePathBySearch(treeData, scFunc, opt);
 }

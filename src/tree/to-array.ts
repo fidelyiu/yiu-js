@@ -1,6 +1,5 @@
 import { TreeBaseOpt } from "../types/tree-type";
 import getTreePropsValue from "./base/get-tree-props-value";
-import TreeIdSet from "./base/tree-id-set";
 
 /**
  * 将树展开，生成一个线性数组
@@ -12,12 +11,13 @@ export default function treeToArray(treeData: Array<any>, opt?: TreeBaseOpt): Ar
     if (!treeData || !Array.isArray(treeData)) return [];
     const result: Array<any> = [];
     const stack = [...treeData];
-    const idSet = new TreeIdSet();
+    const idSet = new Set();
     while (stack.length) {
         const node = stack.pop();
         if (!node) continue;
-        if (!idSet.has(node, opt)) {
-            idSet.push(node, opt);
+        const id = getTreePropsValue(node, "id", opt);
+        if (!idSet.has(id)) {
+            idSet.add(id);
             const children = getTreePropsValue(node, "children", opt);
             if (children && Array.isArray(children)) {
                 stack.unshift(...children);

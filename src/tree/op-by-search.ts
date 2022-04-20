@@ -1,15 +1,12 @@
 import type { TreeBaseOpt, TreeOperationFunc, TreeSearchFunc } from "../types/tree-type";
 import getTreePropsValue from "./base/get-tree-props-value";
 import setTreePropsValue from "./base/set-tree-props-value";
-import TreeIdSet from "./base/tree-id-set";
 
-function _opBySearch(treeData: Array<any>, opFunc: TreeOperationFunc, scFunc: TreeSearchFunc, idSet: TreeIdSet, opt?: TreeBaseOpt): Array<any> {
+function _opBySearch(treeData: Array<any>, opFunc: TreeOperationFunc, scFunc: TreeSearchFunc, opt?: TreeBaseOpt): Array<any> {
     treeData.forEach((item) => {
-        if (idSet.has(item, opt)) return;
-        idSet.push(item, opt);
         const children = getTreePropsValue(item, "children", opt);
         if (Array.isArray(children) && children.length > 0) {
-            setTreePropsValue(item, "children", _opBySearch(children, opFunc, scFunc, idSet, opt), opt);
+            setTreePropsValue(item, "children", _opBySearch(children, opFunc, scFunc, opt), opt);
         }
         if (scFunc(item)) {
             // 符合要求的item
@@ -31,6 +28,5 @@ export default function treeOpBySearch(treeData: Array<any>, opFunc: TreeOperati
     if (typeof scFunc !== "function" || typeof opFunc !== "function") {
         return treeData;
     }
-    const idSet = new TreeIdSet();
-    return _opBySearch(treeData, opFunc, scFunc, idSet, opt);
+    return _opBySearch(treeData, opFunc, scFunc, opt);
 }
